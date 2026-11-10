@@ -1,3 +1,5 @@
+[English](en/README.md) | 中文
+
 # TierSpec
 
 **从需求到实现，面向个人开发者的分档式 AI 工程规范。**
