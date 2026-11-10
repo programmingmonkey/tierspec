@@ -110,7 +110,7 @@ Two deliberate constraints:
 
 ### Design review: one track, because the second caught nothing extra
 
-The author's project replayed 3 design docs with 6 known defects: single-track and two tracks combined both hit the same two and a half (2 fully, 1 partially), while two tracks used about 1.7 times as much as one. So design review is set at **one track, with a fixed template**. With only 3 docs as samples, this shows only that "the second track caught nothing extra," not that a single track is already good enough.
+The author's project replayed 3 design docs with 6 known defects: single-track and two tracks combined both hit the same two and a half (2 fully, 1 partially), while the usage of two tracks was about 1.7 times that of one. So design review is set at **one track, with a fixed template**. With only 3 docs as samples, this shows only that "the second track caught nothing extra," not that a single track is already good enough.
 
 The template's key points follow the same thinking as the code review template:
 
@@ -156,7 +156,7 @@ Verify first, then change. Review feedback can be wrong too: read the code to co
 
 ## Costs and when it applies
 
-- The CLI track takes a few minutes per run and costs from a few tenths of a dollar to about three dollars; the subagent track takes another hundred-odd thousand tokens. A two-track requirements review takes over ten minutes and several hundred thousand tokens in total. That's why it runs only when the human calls it.
+- The CLI track takes a few minutes per run and costs from a few tenths of a dollar to about three dollars; the subagent track takes another hundred-odd thousand tokens. A two-track requirements review takes ten-odd minutes and several hundred thousand tokens in total. That's why it runs only when the human calls it.
 - A sample set needs samples first, and you have none at the start. You can begin with "register every real issue a review leads to fixing," and talk about a baseline once you have twenty or thirty.
 - Review is not a proof of safety. Both tracks reporting nothing doesn't mean there are no problems.
 

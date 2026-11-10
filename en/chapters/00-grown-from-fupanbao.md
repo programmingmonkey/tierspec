@@ -23,13 +23,13 @@ It was written from scratch, deployed and operated by one person plus AI: a pnpm
 |---|---|---|---|
 | 2026-04 | Project starts | — | — |
 | 2026-06 | The first git hook | Block force-pushes to and deletion of the main branch | 2 |
-| 2026-07 | Epistemic honesty rules | The agent wrapped a batch of untrustworthy data into a conclusion, then a document, then a retrospective; each step looked more polished, and the error never changed | 11 |
+| 2026-07 | Epistemic honesty guideline | The agent wrapped a batch of untrustworthy data into a conclusion, then a document, then a retrospective; each step looked more polished, and the error never changed | 11 |
 | 2026-08 | Rules delivered by file path | The always-on entry file has a length cap, and the backend conventions and design spec most often tripped over during tasks never reached the agent at all. The first version was a mirror synced from elsewhere; a week later it was deleted wholesale because the copies drifted (Chapter 4). It was rebuilt in 2026-09 with the content written directly in the rule files | 3, 4 |
 | 2026-08 | Deploy gates moved into the script | While hooking up a new tool that couldn't read the rules, it turned out the three deploy gates had not a single line of implementation in the deploy script | 2 |
 | 2026-08 | Guardrails must carry self-tests | A format checker silently stopped working four separate times, with no signal any of those times | 2 |
 | 2026-08 | Code from local, data from production | On one day the local database was used as evidence for data three times; once, a whole fallback path was designed around an empty table | 11 |
 | 2026-09 | Action gates (read before you act) | Before the first commit or deploy, the matching rules must be read in full, not recalled from memory | 3 |
-| 2026-09 | New spec system | The old spec had bloated to 37KB and nobody could read it all; it was rewritten as a lean version (about 7KB) that depends on no particular tool and that any agent can follow by reading plain markdown, plus a lint that checks structure only | 5 |
+| 2026-09 | New spec system | The old spec rules had bloated to 37KB and nobody could read it all; it was rewritten as a lean version (about 7KB) that depends on no particular tool and that any agent can follow by reading plain markdown, plus a lint that checks structure only | 5 |
 | 2026-11 | Engineering contracts | Engineering behavior rules had been mixed into the visual design spec; they were split out, each with a registered machine guard | 9 |
 
 A snapshot as of 2026-11-10 (not live data): about 7,600 commits, of which about 720 changed the toolchain itself (counted by these paths: the entry file, rules, skills, subagent config, hook wiring and scripts, git hooks, the rule-reading script, spec and doc conventions, engineering contracts, and the master design spec); 37 spec topics completed; 42 engineering contracts registered.

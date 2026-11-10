@@ -93,7 +93,7 @@ The header comment in the eslint config (why this rule goes straight to error le
 - **Read when**: which code changes call for reading this contract; it goes into the index's "when to read" column.
 - **Guard routes** (optional): which staged files should make the commit step run this contract's guards; see below.
 
-**The rule's lead sentence** has to be machine-checkable, so it gets a few mechanical criteria: it is a body paragraph (not a list, table, quote, heading or code block), it ends with a period, and its length is under a cap (say, 400 bytes). Whether it "can be judged right or wrong and can be understood on its own" is beyond a machine; that relies on the author and on review.
+**The rule's lead sentence** has to be machine-checkable, so it gets a few mechanical criteria: it is a body paragraph (not a list, table, quote, heading or code block), it ends with a period, and its length does not exceed a cap (say, 400 bytes). Whether it "can be judged right or wrong and can be understood on its own" is beyond a machine; that relies on the author and on review.
 
 ### How guards are registered
 

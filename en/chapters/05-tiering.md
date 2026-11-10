@@ -154,7 +154,7 @@ The spec format is held in place by a small lint hooked into pre-commit: are tas
 
 The old spec rules kept getting patched until they reached 37KB, too long to read in one go, and became a file that was "nominally binding, actually impossible to read end to end".
 
-**Fix**: rewrote them as a lean version, about 7KB, that doesn't depend on any particular tool, so any agent reading plain markdown can follow it, paired with a small structure-only lint; the old rules were demoted to apply only to existing specs. To be frank, it slowly grew back with practice, and by 2026-11 it was about 69KB again. So one rewrite isn't enough: every time it grows, run it through Chapter 4's bar for adding and removing rules.
+**Fix**: rewrote them as a lean version, about 7KB, that doesn't depend on any particular tool, so any agent reading plain markdown can follow it, paired with a small structure-only lint; the old rules were demoted to apply only to existing specs. To be frank, it slowly grew back with practice, and by 2026-11 it had already reached about 69KB. So one rewrite isn't enough: every time it grows, run it through Chapter 4's bar for adding and removing rules.
 
 ### The format lint failed silently four times
 

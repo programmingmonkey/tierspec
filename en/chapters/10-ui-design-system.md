@@ -7,7 +7,7 @@ When you have an agent build UI, the two most common results are:
 - **It looks AI-made at a glance.** Every block of content is wrapped in the same rounded card with a faint shadow, with cards nested inside cards; big gradient headings; a row of "big number + small label"; an icon in front of every heading; sections fading in one by one. None of it is ugly on its own, but in a tool people use every day, it's all noise.
 - **The visuals slowly drift.** When the agent can't find a suitable color, it defines a private one inside a component; the next session defines another, similar one. A few months later, the same "warning" might come in five shades of yellow.
 
-Add the situation described in Chapter 9: engineering behavior rules tucked inside the visual spec, making it tiring to read both for whoever is changing styles and for whoever is changing logic.
+Add the situation described in Chapter 9: engineering behavior rules tucked inside the visual design spec, making it tiring to read both for whoever is changing styles and for whoever is changing logic.
 
 ## The idea
 
@@ -21,7 +21,7 @@ In the author's project, what has to be upheld when building UI settled into sev
 |---|---|---|
 | ① Tokens | Visual values such as colors, shadows, and spacing; **values live only here** | CSS variables in the stylesheet |
 | ② Visual language | Style intent: what it looks like, and why | Overview, principles, prohibitions, the "AI default look" blacklist, good and bad samples |
-| ③ Master spec and page overrides | Component specs (sizes, forms), plus each token's name, purpose, and where it's used; token values are not copied | The master spec (a large file, read section by section); `pages/<page>.md` only overrides the master spec |
+| ③ Master design spec and page overrides | Component specs (sizes, forms), plus each token's name, purpose, and where it's used; token values are not copied | The master design spec ("master spec" for short; a large file, read section by section); `pages/<page>.md` only overrides the master spec |
 | ④ Engineering contracts | How the code must be written | Not part of the design system but a peer of it (Chapter 9); listed here only because it also has to be upheld when building UI |
 | ⑤ Design skill | Working method: which document to read, and in what order to work | Four modes: explore, converge, implement, review |
 | ⑥ Review mode | The detailed rules for the "review" mode in ⑤ | Two tracks: gathering evidence and design judgment |
@@ -107,10 +107,10 @@ The few things the machines can't police (typefaces, corner radius, motion, prim
 |---|---|---|
 | **Explore** | A new panel, a new page, or redoing a block | Produce **3 low-fidelity candidates**, each covering only the default state plus two or three key states. The candidates differ clearly on at least two of three dimensions: layout structure, how information is encoded, and color intensity; at least one of them leans bold and color-heavy. Only red lines apply; style principles are used only for annotation. Hand them to the human to pick one or combine several |
 | **Converge** | After the human settles on a direction | Produce one complete prototype: covering every state, in both light and dark. Self-check against all the principles; conflicts with style principles are not automatically resolved toward the restrained side but listed for the human to decide |
-| **Implement** | After the prototype is finalized | Uphold the master spec, page overrides, and engineering contracts; check both light and dark |
+| **Implement** | After the prototype is finalized | Uphold the master design spec, page overrides, and engineering contracts; check both light and dark |
 | **Review** | Self-check before delivery; the full two tracks when the human asks | See below |
 
-How this relates to the PRD process in Chapter 6: exploration comes after the PRD's layout and definitions have been pinned down; candidates can be low-fidelity, but their data is generated at production scale; the version that comes out of convergence is the prototype that Chapter 6's "PRD with a prototype" refers to (single-file HTML, data at realistic scale, demo toggles). A redesign adds a new version and doesn't delete the old one: after the human picks, the rejected candidates are kept too.
+How this relates to the PRD process in Chapter 6: exploration comes after the PRD's layout and definitions have been pinned down; candidates can be low-fidelity, but their data is generated at production scale; the version that comes out of convergence is the prototype that Chapter 6's "Pairing the PRD with a prototype" refers to (single-file HTML, data at realistic scale, demo toggles). A redesign adds a new version and doesn't delete the old one: after the human picks, the rejected candidates are kept too.
 
 ### Review: two tracks, report leads with conclusions
 

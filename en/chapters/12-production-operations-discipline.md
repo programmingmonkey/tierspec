@@ -25,7 +25,7 @@ We recommend that both channels use a **read-only role**; they differ only in ho
 | Channel | Who uses it | Recommended restrictions |
 |---|---|---|
 | Main-session channel | You and the main session | Read-only role that can read all business tables; writes go only through the write process below |
-| Reviewer read-only channel | Review subagents, command-line review (Chapter 7) | A read-only role with fewer privileges; sensitive tables (accounts, payments, users' private content) are not granted; on the server side, this account is restricted to running one fixed query entry point |
+| Reviewer read-only channel | Review subagents, the CLI review track (Chapter 7) | A read-only role with fewer privileges; sensitive tables (accounts, payments, users' private content) are not granted; on the server side, this account is restricted to running one fixed query entry point |
 
 To be frank, in the author's project the main-session channel currently uses a business account that can write, and "read, never write" is held in place by rules alone. As Chapter 2 says, written rules are not enforcement, so the practice recommended here is stricter than where the author's project stands today.
 

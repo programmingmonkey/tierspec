@@ -10,7 +10,7 @@ Like common spec-driven development (SDD), it says "write it down clearly before
 
 - **Tiers, not one size fits all.** Not every change needs the full process. First do a read-only investigation and give the four-line report, then pick one of three tiers, A / B / C. A change with an irreversible step, trade-offs the human must decide repeatedly, or a need for an audit trail is Tier C; the rest split into A and B by asking "can the fix be stated in one sentence?" and "has the impact been verified?". How heavy the process is follows the tier.
 - **Tier C product requirements get a PRD first where possible, then a spec.** New modules and new pages especially. The PRD comes with a prototype; product intent and technical design are written and reviewed separately.
-- **Rules must reach the agent, and critical actions must be blocked.** The spec is only one layer; how rules reach the agent, and how irreversible actions are blocked by machine gates, are just as much part of the practice.
+- **Rules must reach the agent, and critical actions must be stoppable.** The spec is only one layer; how rules reach the agent, and how irreversible actions are blocked by machine gates, are just as much part of the practice.
 - **Conclusions need evidence.** Data conclusions are checked against production, evidence is logged item by item, and when there is no trustworthy basis, nothing is produced.
 
 This repository covers only **ideas and practices**, with templates and desensitized examples; it ships no framework code. How it maps to Claude Code's official best practices and to other open-source SDD methods, and what it takes or leaves, is in Chapter 5; the skills and design ideas behind the design system are in Chapter 10. The examples use [Claude Code](https://code.claude.com/docs/en/overview), but most of the ideas don't depend on any particular tool.
@@ -33,7 +33,7 @@ Tiering ── A: change directly ───────────────�
                          └── Technical rework / bug fix / engineering task ──▶ requirements → design → tasks
                                                                                           │
                                                                                           ▼
-                                 Implement → Code review* → Acceptance → Post-release verification → Archive
+                                 Implement → Code review* → Completion check → Post-release verification → Archive
 ```
 
 \* The author's self-check is mandatory; the independent reviews marked with an asterisk are called by the human, not run automatically by the agent (Chapter 7).

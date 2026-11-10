@@ -33,7 +33,7 @@ Stop as soon as you recognize one:
   | Layer | How to handle it |
   |---|---|
   | What can be cross-checked | Pin it down, and state the basis |
-  | What contradicts itself | Call it a contradiction, and state both sides |
+  | What conflicts with each other | Call it a contradiction, and state both sides |
   | What truly can't be found | Leave it blank; don't invent a cause |
   
   "Nothing can be determined" is laziness too.
@@ -68,7 +68,7 @@ When there's no trustworthy basis, the correct output is no output: say "I don't
 - Stop on these signals: looking for an explanation of a conclusion instead of reporting the contradiction; a result that's unusually clean; rushing to find a conclusion that holds up;
   an explanation that casts you as victim or detective; a tone stronger than the evidence.
 - Tag the source of every claim that matters: [tool output] [inference] [guess]. When all paths share a source, convergence doesn't count as evidence.
-- Write conclusions in three layers: what can be cross-checked / what contradicts itself / what truly can't be found. Leave the unfindable blank; don't invent a cause.
+- Write conclusions in three layers: what can be cross-checked / what conflicts with each other / what truly can't be found. Leave the unfindable blank; don't invent a cause.
 - If a conclusion involves "how many rows, what values, whether this kind of data exists", check production (read-only channel); don't use the local database as evidence.
 - PRDs, specs, past reports, and generated graphs are not evidence of the current state.
 ```
@@ -84,7 +84,7 @@ Below is a fictional investigation conclusion, demonstrating the three layers an
 - The daily report table has only 9 channels for yesterday ([tool output] production read-only query, 2026-11-10 14:05, SQL attached);
   the collection log also has success records for only 9 channels that day ([tool output] server log). The two paths are independent and agree.
 
-**What contradicts itself**
+**What conflicts with each other**
 - The channel config table has 12 enabled, but the collection job's startup log loaded only 9. The cause hasn't been located yet; no guessing.
 
 **What truly can't be found**

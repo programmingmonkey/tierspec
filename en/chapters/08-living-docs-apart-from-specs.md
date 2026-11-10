@@ -95,7 +95,7 @@ Also watch for circular self-confirmation: if the graph ingested the specs, and 
 ## Costs and when it applies
 
 - Living docs have to change along with the code, which adds a few minutes to each commit. At the start, maintain only the two or three most frequently asked about (architecture, data model, deployment), and add more once "the agent got it wrong following an old description" happens.
-- The trigger table has to be tailored to each project. The table itself isn't what matters; what matters is the habit of asking, "I changed code, so which sentence in the docs has become false?"
+- The doc sync table has to be tailored to each project. The table itself isn't what matters; what matters is the habit of asking, "I changed code, so which sentence in the docs has become false?"
 
 ## Pitfalls we hit
 

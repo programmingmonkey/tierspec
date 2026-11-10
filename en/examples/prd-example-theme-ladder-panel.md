@@ -1,15 +1,15 @@
 # PRD-Review-Add Theme Ladder panel (desensitized case study)
 
 > **About this case study**: Desensitized and condensed from a real Fupanbao PRD. The technical design, internal names, code paths and production data details were removed, and numbers are approximate; the structure, the human-written original requirement, and the decision process across four rounds of confirmation are kept.
-> The human-written parts are reproduced as written, with only two substitutions: a specific stock name became "a certain stock", and a back-office field name in one quote became "a certain column" (7.2-27). In this English edition those parts are translated from the Chinese original.
+> The human-written parts are reproduced as written, with only two substitutions: a specific stock name became "a certain stock", and an admin-console field name in one quote became "a certain column" (7.2-27). In this English edition those parts are translated from the Chinese original.
 > The original was written in 2026-09, when the template still had sections for the data model and APIs; numbering here has been rearranged to follow the current template ([templates/prd-template.md](../templates/prd-template.md)).
 > How to read it: first see how short the human's original requirement in §3.1 is, then what the agent filled in from §3.1.1 onward and how the human decided in §7, and finally how §8 and the appendix turn into a spec.
 
 > The version table is an excerpt: the prototype details of V1.7 and V1.8 are omitted.
 
-| Doc version | Revised on | Revised by | Changes |
+| Doc version | Revision date | Revised by | Changes |
 |:--- |:--- |:--- |:--- |
-| V1.0 | 2026-09-07 | Human | Created the document |
+| V1.0 | 2026-09-07 | Human | Document created |
 | V1.1 | 2026-09-07 | agent | Filled in every section; verified the current-state baseline; flagged the core risk that "a level is cumulative state" |
 | V1.2 | 2026-09-07 | agent | Backfilled the 14 answers from round 1; raised 7 pending items for round 2 |
 | V1.3 | 2026-09-07 | agent | Backfilled round 2's answers: the algorithm can lower a level no further than 1; out only manually |
@@ -41,7 +41,7 @@
 
 ## 2. Feature list
 
-| Platform | Page | Feature | Description |
+| Platform | Page | Feature title | Feature description |
 |:--- |:--- |:--- |:--- |
 | Web | Review home page | Add a "Theme Ladder" panel | X axis is trading days, Y axis is theme level (levels 1–20 shown; level 0 = out, not shown); each cell shows the theme name, % change, and up/down/flat |
 | Web | Theme Ladder | Bull/bear cycle band at the top | Reuses the existing band; consecutive equal values merge into segments |
@@ -136,10 +136,10 @@ The current-state baseline shows that nearly every theme is listed on and off. S
 
 | Item | This requirement |
 |:--- |:--- |
-| Refresh and timeliness | Computed once after the close each trading day, with a fallback recompute the next morning; after operations staff change a level, that theme's levels on later days update to match |
-| Failure and restart | If the after-close computation fails, the next morning's fallback recompute fills the gap |
+| Refresh and freshness | Computed once after the close each trading day, with a fallback recompute the next morning; after operations staff change a level, that theme's levels on later days update to match |
+| Failures and restarts | If the after-close computation fails, the next morning's fallback recompute fills the gap |
 | Who can see it | Follows global permissions |
-| Responsiveness | Swiping left/right and widening to change the column count send no requests and involve no waiting; popover details load on demand on hover |
+| Response speed | Swiping left/right and widening to change the column count send no requests and involve no waiting; popover details load on demand on hover |
 
 ## 5. UI/UX design
 
@@ -155,7 +155,7 @@ Companion prototype: [prototype-theme-ladder-panel.html](prototype-theme-ladder-
 
 > The original numbered its phases A–H; in condensing, "read API" was folded into the user-facing panel, and the two prototypes are already done in §5, so the phases are renumbered 1–6 in release order.
 
-| Phase | Scope | Releasable on its own? |
+| Phase | Scope | Independently releasable? |
 |:--- |:--- |:--- |
 | 1 Data layer | Store levels and thresholds | ✅ Invisible to users; the developer self-verifies the data structures are ready |
 | 2 Algorithm | Up/down moves and level accumulation, including edge cases like hitting the top, hitting the bottom, dropping off the list, and manual baselines | ✅ Invisible to users; dry-run against the last two months of production, and manually spot-check a few level trails |
@@ -169,7 +169,7 @@ Companion prototype: [prototype-theme-ladder-panel.html](prototype-theme-ladder-
 
 ## 7. Confirmation items
 
-### 7.1 For your information — items the agent flags for the human
+### 7.1 For your information (items the agent flags for the human)
 
 - **7.1-1** The new panel's name is close to the existing "Limit-Up Streak Ladder" and "Live Limit-Up Streak Ladder", and the three will coexist for the long term.
 - **7.1-2** A theme can enter only by being manually marked level 1, so on launch day the panel is bound to be empty until operations staff finish cold-start entry (phase 5).
@@ -191,7 +191,7 @@ Companion prototype: [prototype-theme-ladder-panel.html](prototype-theme-ladder-
 | 7.2-5 | "Journey" or "position" | Journey (cumulative); the N-day percentile approach is rejected | "N-day change won't work, there's a problem, this N can't be picked, no way to reflect the theme's cycle, like going up from level 1 to level 5" |
 | 7.2-8 | Vertical strategy | Render only the levels that have data; the panel grows taller with the data automatically | "pick 2" |
 | 7.2-10 | Popover numbers | Switch with the global ST filter toggle (overturned the agent's suggestion) | "switch based on the ST toggle" |
-| 7.2-14 | Default range | 60 trading days (originally 90); "under 10 columns per screen" was later relaxed by 7.2-25 | "90 days is too many, make the default 60 days, one screen should only show under 10 dates i think, i'll check when you draw the prototype" |
+| 7.2-14 | Default range | 60 trading days (originally 90); "under 10 columns per screen" was later relaxed by 7.2-25 | "90 days is too many, make the default 60 days, one screen should only show under 10 dates i think, i'll look and confirm when the prototype is drawn" |
 
 **Round 2 (4 items)**
 

@@ -156,7 +156,7 @@ It's common for one person to have several agent sessions open at once. The auth
 
 | Gate | Applies to | What it covers | Notes |
 |---|---|---|---|
-| pre-commit | Commits from every tool on this machine | Lock files, accompanying migrations, lint, rule mapping, spec structure, contract guards, etc. | `--no-verify` can bypass it; every clone needs `core.hooksPath` set once (Chapter 2). The author's project's contract guards are still in their trial period and only warn |
+| pre-commit | Commits from every tool on this machine | Lock files, accompanying migrations, lint, rule mapping, spec structure, contract guards, etc. | `--no-verify` can bypass it; every clone needs `core.hooksPath` set once (Chapter 2). The author's project's contract guards are still in their shadow period (Chapter 9) and only warn |
 | pre-push | Pushes from every tool on this machine | Blocks force-pushes to and deletion of the main branch | Same as above |
 | commit-msg | Commits from every tool on this machine | Blocks markers that would skip CI | Same as above |
 | Read-before-act gate (`PreToolUse`) | Claude only | Before the first commit, deploy or production data write, the corresponding rules must be read in full | Lets things through when it errors; only guards against carelessness |

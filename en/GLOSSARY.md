@@ -44,7 +44,7 @@ Every English term used for TierSpec's core ideas, fixed once so the whole Engli
 | 状态：草稿 → 已批准 → 执行中 → 已完成；已搁置 | Status: Draft → Approved → In progress → Done; Shelved |
 | B 档 spec.md 三节：目标与不做 / 做法与步骤 / 记录 | Goals and non-goals / Approach and steps / Log |
 | 不做什么 | non-goal ("what we won't do") |
-| 待确认 | open questions (in a spec); Pending (as a PRD column) |
+| 待确认 | open questions (in a spec); Pending (as a PRD section) |
 | requirements.md：背景与目标 · 范围 · 验收标准 | Background and goals · Scope · Acceptance criteria |
 | design.md：现状与方案 · 分期表 | Current state and approach · phasing table |
 | tasks.md：任务 · 记录 | Tasks · Log |
@@ -63,7 +63,7 @@ Every English term used for TierSpec's core ideas, fixed once so the whole Engli
 | 口径 | definition (of a number or label: what it means, as of when, matching which panel) | "改数据口径或统计口径" → "change a data or metric definition" |
 | 口径表 | definitions table | |
 | 确认事项 | confirmation items | |
-| 告知 / 已确认 / 待确认 | For your information / Confirmed / Pending | PRD §7.1 / 7.2 / 7.3 |
+| 告知 / 已确认 / 待确认（三栏） | For your information / Confirmed / Pending (three sections) | PRD §7.1 / 7.2 / 7.3 |
 | 原话 / 人的原话 | the human's own words / "In their words" (column) | |
 | 定案 | decision | |
 | 定案速查 | decision digest | PRD §8 |
@@ -170,7 +170,7 @@ Every English term used for TierSpec's core ideas, fixed once so the whole Engli
 | 中文 | English |
 |---|---|
 | 设计体系 | design system |
-| 设计主规范 / 主规范 | master design spec |
+| 设计主规范 / 主规范 | master design spec ("master spec" for short, after first use) |
 | 视觉语言 | visual language |
 | 设计令牌 / 令牌 | design tokens / tokens |
 | 令牌准入 | token admission |
@@ -192,7 +192,7 @@ Every English term used for TierSpec's core ideas, fixed once so the whole Engli
 | 本地库 | local database |
 | 只读通道 / 只读账号 | read-only channel / read-only account |
 | 来源标注〔事实〕〔推断〕〔猜测〕〔工具返回〕 | source tags [fact] [inference] [guess] [tool output] |
-| 〔用户原话〕〔项目主人原话〕〔项目主人的理由，转述〕 | [user's words] [owner's words] [owner's reasoning, paraphrased] |
+| 〔项目主人原话〕〔项目主人的理由，转述〕 | [owner's words] [owner's reasoning, paraphrased] |
 | 生产操作纪律 | production operations discipline |
 | 写线上数据 | write production data |
 | 口令（人的确认） | confirmation phrase |
@@ -229,37 +229,39 @@ Every English term used for TierSpec's core ideas, fixed once so the whole Engli
 
 Chinese A-shares have a daily price limit (usually ±10%); hitting it is a "limit-up" or "limit-down".
 
-| 中文 | English |
-|---|---|
-| A 股 | China's A-share market |
-| 复盘 | post-market review ("review" in page names) |
-| 盯盘 | live monitoring |
-| 盘中 / 盘后 / 竞价 | intraday / after the close / the call auction |
-| 交易日 | trading day |
-| 北京时间 | Beijing time |
-| 红涨绿跌 | red for up, green for down (the Chinese market convention) |
-| 题材 | theme (a market theme or concept stocks trade on) |
-| 题材天梯 | Theme Ladder (panel name) |
-| 连板天梯 / 实时连板天梯 | Limit-Up Streak Ladder / Live Limit-Up Streak Ladder |
-| 等级 | level |
-| 升级 / 降级 / 平级 | up / down / flat (a level) |
-| 出局 | out (level 0, not shown) |
-| 在档 / 断档 / 建档 | listed / dropped off the list / daily theme list |
-| 涨停 / 跌停 | limit-up / limit-down |
-| 连板 / N 连板 / 首板 / 最高连板 | consecutive limit-ups / N-day limit-up streak / first limit-up / longest streak |
-| 龙头 / 补涨 / 情绪 | leader / catch-up / sentiment |
-| 龙虎榜 | Dragon-Tiger List (exchange disclosure of top traders) |
-| 涨跌幅 | % change |
-| 流通市值加权 | float-cap weighted |
-| 多空循环 | bull/bear cycle |
-| 大盘节奏 | market rhythm |
-| 大盘天气 | market weather |
-| 弱转强 | weak-to-strong |
-| 横条 | band (the bull/bear cycle band) |
-| 轨迹 | trail (a theme's level trail) |
-| 标级 | mark (a theme) level N |
-| ST 筛选开关 | ST filter toggle (ST = "special treatment" stocks flagged for risk) |
-| 快照面板 / 单例面板 | snapshot panel / singleton panel |
-| 浮窗 | popover |
-| 联动 / 广播 | linked selection / broadcast |
-| 后台 / 前台 | admin console / user-facing site |
+| 中文 | English | Notes |
+|---|---|---|
+| A 股 | China's A-share market | |
+| 复盘 | post-market review ("review" in page names) | |
+| 盯盘 | live monitoring | |
+| 盘中 / 盘后 / 竞价 | intraday / after the close / the call auction | |
+| 交易日 | trading day | |
+| 北京时间 | Beijing time | |
+| 红涨绿跌 | red for up, green for down (the Chinese market convention) | |
+| 题材 | theme (a market theme or concept stocks trade on) | |
+| 题材天梯 | Theme Ladder (panel name) | |
+| 连板天梯 / 实时连板天梯 | Limit-Up Streak Ladder / Live Limit-Up Streak Ladder | |
+| 等级 | level | |
+| 升级 / 降级 / 平级 | up / down / flat (a level) | |
+| 出局 | out (level 0, not shown) | |
+| 在档 / 断档 / 建档 | listed / dropped off the list / daily theme list | |
+| 涨停 / 跌停 | limit-up / limit-down | |
+| 连板 / N 连板 / 首板 / 最高连板 | consecutive limit-ups / N-day limit-up streak / first limit-up / longest streak | |
+| 龙头 / 补涨 / 情绪 | leader / catch-up / sentiment | Tags put on individual stocks: the stock leading a theme; a laggard catching up with the theme; a stock driven by market sentiment |
+| 主升 | main run-up | The main upward leg of a theme's cycle |
+| 高位题材 / 低位题材 | high-position theme / low-position theme | A theme that has already run up a long way (late in its cycle) / one still early in its run |
+| 龙虎榜 | Dragon-Tiger List (exchange disclosure of top traders) | |
+| 涨跌幅 | % change | |
+| 流通市值加权 | float-cap weighted | |
+| 多空循环 | bull/bear cycle | |
+| 大盘节奏 | market rhythm | |
+| 大盘天气 | market weather | |
+| 弱转强 | weak-to-strong | |
+| 横条 | band (the bull/bear cycle band) | |
+| 轨迹 | trail (a theme's level trail) | |
+| 标级 | mark (a theme) level N | |
+| ST 筛选开关 | ST filter toggle (ST = "special treatment" stocks flagged for risk) | |
+| 快照面板 / 单例面板 | snapshot panel / singleton panel | |
+| 浮窗 | popover | |
+| 联动 / 广播 | linked selection / broadcast | |
+| 后台 / 前台 | admin console / user-facing site | |

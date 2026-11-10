@@ -12,7 +12,7 @@ Then one day you change a rule, update three places, and miss one. The agent rea
 
 - **Copies will drift.** Not "might"; it's only a matter of time. When the same fact is written in two places, the person changing it only has to miss one, and the two start saying different things; the agent trusts whichever one it happens to read.
 - **Pointers are easier to maintain than excerpts.** When a path changes, the reference breaks, and a break can be detected; when content changes, a copy raises no error, it just quietly becomes false.
-- **Docs say "how to check live," not numbers that will change.** "There are 12 checks in total" goes stale the moment it's written; "Check live: `grep -c '^check_' .githooks/pre-commit`" doesn't go stale silently.
+- **Docs say "how to check live," not numbers that will change.** "There are 12 checks in total" is bound to go stale once it's written down; "Check live: `grep -c '^check_' .githooks/pre-commit`" doesn't go stale silently.
 
 ## In practice
 

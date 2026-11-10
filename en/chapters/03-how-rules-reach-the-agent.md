@@ -20,7 +20,7 @@ Different rules need different delivery timing. Sorted by "when is it needed," t
 | **Always-on at session start** | At the start of every session; reloaded automatically after compaction | What every session needs: project overview, red lines, language and time conventions, sensitive-data rules | `CLAUDE.md` + files under `.claude/rules/` without `paths:` |
 | **Path-scoped delivery** | When reading or writing files that match certain paths | What's only needed when touching a certain kind of file: backend conventions, the design spec index, doc library rules | Files under `.claude/rules/` with `paths:` |
 | **Read-before-act gate** | Before the first time a certain kind of action is performed | The full procedure for irreversible actions: commit and push, deploy, change production data | A `PreToolUse` hook blocks it and requires reading the whole file first |
-| **On-demand invocation** | When the agent decides it's needed, or the user names it | Multi-step procedures: writing a spec, review, checking production data, doing UI | `.claude/skills/` |
+| **On-demand invocation** | When the agent decides it's needed, or the human names it | Multi-step procedures: writing a spec, review, checking production data, doing UI | `.claude/skills/` |
 
 This chapter goes into how the text layer is delivered; for the full picture of all the layers, see Chapter 1. There is also a fifth category that doesn't rely on delivery at all: **things that must hold go into no channel; they go into machine gates** (Chapter 2).
 
