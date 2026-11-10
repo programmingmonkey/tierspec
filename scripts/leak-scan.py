@@ -12,7 +12,7 @@
      命中的片段逐个对白名单（整串相等），不按整行放过。
   ② 本机拒绝词表 .leak-denylist（不入库）：每行一个正则，不区分大小写。
      词表里有一行写错，整次扫描判红；没有词表也判红，除非设了 LEAK_SCAN_ALLOW_NO_DENYLIST=1（CI 用）。
-另有一条：站点域名（SITE_DOMAIN）只允许出现在 chapters/00-*.md，提交说明里也不允许。
+另有一条：站点域名（SITE_DOMAIN）只允许出现在第 0 章，即 chapters/00-*.md 与英文版 en/chapters/00-*.md，提交说明里也不允许。
 读不到的文件一律判红。任何意外错误都判红，不静默放行。
 """
 import os
@@ -24,7 +24,7 @@ import tempfile
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DENYLIST = os.path.join(ROOT, '.leak-denylist')
 SITE_DOMAIN = re.compile(r'fupanbao\.top', re.I)
-SITE_DOMAIN_ALLOWED = re.compile(r'^chapters/00-[^/]*\.md$')
+SITE_DOMAIN_ALLOWED = re.compile(r'^(?:en/)?chapters/00-[^/]*\.md$')   # 中文与英文版的第 0 章
 
 GENERIC = [
     ('IPv4', re.compile(r'(?<![\d.])(?:\d{1,3}\.){3}\d{1,3}(?![\d.])')),
@@ -157,6 +157,17 @@ def self_test():
             fails.append(f'误拦：{k}')
     if scan_text('t', bad['站点域名'], deny, allow_site_domain=True):
         fails.append('第 0 章的站点域名被误拦')
+    # 站点域名的路径白名单：只放中文与英文版的第 0 章
+    domain_ok = ['chapters/00-从复盘宝长出来.md', 'en/chapters/00-grown-from-fupanbao.md']
+    domain_bad = ['README.md', 'en/README.md', 'chapters/01-x.md', 'en/chapters/01-claude-code-tool-layers.md',
+                  'en/chapters/sub/00-x.md', 'xen/chapters/00-x.md', 'fr/chapters/00-x.md',
+                  'en/examples/00-x.md', 'en/chapters/00-x.md.bak', 'chapters/00-x.html']
+    for p in domain_ok:
+        if not SITE_DOMAIN_ALLOWED.match(p):
+            fails.append(f'第 0 章路径未放行：{p}')
+    for p in domain_bad:
+        if SITE_DOMAIN_ALLOWED.match(p):
+            fails.append(f'非第 0 章路径被放行：{p}')
     # 词表写坏必须判红
     global DENYLIST
     saved = DENYLIST
@@ -180,7 +191,7 @@ def self_test():
             if env is not None:
                 os.environ['LEAK_SCAN_ALLOW_NO_DENYLIST'] = env
     DENYLIST = saved
-    total = len(bad) + len(good) + 3
+    total = len(bad) + len(good) + 3 + len(domain_ok) + len(domain_bad)
     if fails:
         print('\n'.join(fails))
         print(f'❌ 自测 {total - len(fails)}/{total}', file=sys.stderr)
