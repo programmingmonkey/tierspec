@@ -1,0 +1,3 @@
+# 本地拒绝词表：内容本身就是敏感词，绝不入库
+.leak-denylist
+.DS_Store
