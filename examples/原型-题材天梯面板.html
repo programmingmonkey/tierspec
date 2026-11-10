@@ -167,6 +167,7 @@ body { margin:0; background:var(--bg-page); color:var(--text-1); font:13px/1.5 v
       <li>悬浮看浮窗；点击 = 广播选中题材 + 点亮它的全轨迹，自动滚到轨迹处，再点一次取消（8-11）。</li>
       <li>「含 ST」开关只影响浮窗里的家数，等级与涨跌幅不变（8-12）。</li>
       <li>多空循环横条：连续同值合并成段，不画未来列（8-13）。</li>
+      <li>§3.1.4 的空态里，「某题材某日不在档」「横条某段未录」由数据自然呈现（断档的日子没有格子、早期横条是灰的）；「建档天数不足」「龙头未标注」这两种本原型没做开关。</li>
     </ul>
   </div>
 </div>
@@ -230,10 +231,12 @@ function detail(s, i, incST) { const r = rng(7 + i * 131 + s.name.length * 17);
   const lu = Math.max(0, Math.round((s.pct[i] + 3) * (0.8 + r())));
   const stDraw = r();                                  // 先固定抽取，开关只改家数、不改其它字段（7.2-19）
   const st = incST ? 0 : Math.min(lu, Math.round(stDraw * 1.4));
-  const up = lu - st; const maxB = up ? 1 + Math.floor(r() * 4) : 0;
+  const up = lu - st; const mbDraw = r(); const maxB = up ? 1 + Math.floor(mbDraw * 4) : 0;
+  const dnAll = Math.max(0, Math.round(-s.pct[i] * r() * 0.8)), dnDraw = r();   // 先固定抽取
+  const down = incST ? dnAll : dnAll - Math.min(dnAll, Math.round(dnDraw * 1.2));
   const dist = []; for (let b = maxB; b >= 1; b--) { const c = b === maxB ? 1 : Math.floor(r() * 3); if (c) dist.push(`${b}板×${c}`); }
   const pick = k => FAKE_STOCKS[(i + k + s.name.length) % FAKE_STOCKS.length];
-  return { up, down: Math.max(0, Math.round(-s.pct[i] * r() * 0.8)), maxB, maxStock: maxB ? pick(0) : '—',
+  return { up, down, maxB, maxStock: maxB ? pick(0) : '—',
     dist: dist.join('、') || '—', tags: up ? [['龙头', pick(1)], ['补涨', pick(2)]] : [] }; }
 
 /* ── 布局常量（PRD 7.2-24 / 7.2-25） ───────────────── */

@@ -1,0 +1,15 @@
+# 兜底：本地钩子只在设了 core.hooksPath 的机器上跑，网页编辑、--no-verify、新 clone 都会绕过它。
+# CI 没有本机拒绝词表，只跑通用模式与站点域名规则。
+name: leak-scan
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/leak-scan.py --self-test
+      - run: LEAK_SCAN_ALLOW_NO_DENYLIST=1 python3 scripts/leak-scan.py
