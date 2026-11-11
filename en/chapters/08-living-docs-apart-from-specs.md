@@ -80,6 +80,16 @@ Make a **doc sync table**: which kinds of code change must update which living d
 - A PRD is the source of intent, not of the current state; once it's turned into a spec, the spec is authoritative for the requirements (Chapter 6). New facts discovered while executing the spec are fed back into the PRD's confirmation items; when that spec is done, the PRD is archived along with it and not changed after that.
 - Both can be committed and read, but when you read them, keep in mind: this is "what we planned at the time," not "what is now."
 
+### Why specs don't get per-module version numbers
+
+A natural idea is to version each module's spec: once V2 covers most of V1, retire V1, and to learn what the module looks like, just read the latest version. The trouble is that this treats "the latest spec" as a current-state doc:
+
+- **The latest version is still just a snapshot of one change.** Plans revised at launch, and behavior later changed in passing by other requirements, aren't reflected in it.
+- **A spec's boundary is one change, not one module.** When a change spans two modules, there's no right module to hang the version number on.
+- **Supersession is many-to-many; version numbers can only form a chain.** One new spec may overturn a few items in several old specs at once; one old spec may be partly overturned by several new specs, one after another. Numbering them V1, V2, V3 pretends each version wholly replaced the one before; retiring all of V1 because "most of it is covered" also throws away the items in V1 that nothing covered.
+
+To answer "what does this module look like now," read the code and the living docs (the authoritative source comes first), and the engineering contracts (Chapter 9) for the constraints it must hold. This is the same reason Chapter 5 doesn't adopt OpenSpec's "current spec library": don't create a second "current state."
+
 ### Incident records: the "why" behind a rule
 
 - Each rule file has a matching incident record with the same name. The rule body keeps only one line, "post-mortem: see such-and-such"; the story and the evidence live in the incident record.
